@@ -106,4 +106,24 @@ class MainController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function productEdit(product $product)
+    {
+
+        return view('pages.productEdit', compact('product',));
+    }
+
+    public function productUpdate(Request $request, product $product)
+    {
+
+        $data = $request->validate([
+            'name' => 'required|string|max:32',
+        ]);
+
+        $product->name = $data['name'];
+
+        $product->save();
+
+        return redirect()->route('home');
+    }
 }

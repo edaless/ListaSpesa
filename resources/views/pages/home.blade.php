@@ -26,7 +26,11 @@
             <ul >
                 @foreach ($category->products as $product)
                     <li class="prodotto">{{ $product->name }} 
-                        <a href="{{ route('product.delete', $product) }}">X</a></li>
+                        <a href="{{ route('product.delete', $product) }}">X</a>
+                        <a href="{{ route('product.edit', $product) }}">
+                            EDIT
+                        </a>
+                    </li>
                 @endforeach
                 <a href="{{ route('product.create', $category->id) }}">CREATE NEW product</a>
             </ul>

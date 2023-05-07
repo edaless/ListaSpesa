@@ -35,7 +35,7 @@ Route::get('/category/delete/{category}', [MainController::class, 'categoryDelet
 
 
 // create - store product
-Route::get('/product/create', [MainController::class, 'productCreate'])
+Route::get('/product/create/{id}', [MainController::class, 'productCreate'])
     ->name('product.create');
 
 Route::post('/product/store', [MainController::class, 'productStore'])
@@ -55,3 +55,12 @@ Route::get('/category/edit/{category}', [MainController::class, 'categoryEdit'])
 // update category
 Route::post('/category/update/{category}', [MainController::class, 'categoryUpdate'])
     ->name('category.update');
+
+// edit product
+Route::get('/product/edit/{product}', [MainController::class, 'productEdit'])
+    ->name('product.edit');
+
+
+// update product
+Route::post('/product/update/{product}', [MainController::class, 'productUpdate'])
+    ->name('product.update');
