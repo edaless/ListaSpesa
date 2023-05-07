@@ -70,4 +70,40 @@ class MainController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function categoryDelete(category $category)
+    {
+
+        $category->delete();
+
+        return redirect()->route('home');
+    }
+
+    public function productDelete(Product $product)
+    {
+
+        $product->delete();
+
+        return redirect()->route('home');
+    }
+
+    public function categoryEdit(Category $category)
+    {
+
+        return view('pages.categoryEdit', compact('category',));
+    }
+
+    public function categoryUpdate(Request $request, category $category)
+    {
+
+        $data = $request->validate([
+            'name' => 'required|string|max:32',
+        ]);
+
+        $category->name = $data['name'];
+
+        $category->save();
+
+        return redirect()->route('home');
+    }
 }

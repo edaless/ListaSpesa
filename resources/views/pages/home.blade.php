@@ -6,21 +6,29 @@
 
 <a href="{{ route('category.create') }}">CREATE NEW category</a>
 <br>
-<a href="{{ route('product.create') }}">CREATE NEW product</a>
+{{-- <a href="{{ route('product.create') }}">CREATE NEW product</a> --}}
     <ul>
-        <div>cateogorie:</div>
+        
         @foreach ($categories as $category)
         <li class="categoria">
+            <div class="my-options">
+                <a href="{{ route('category.delete', $category) }}">X</a>
+                <br>
+                <a href="{{ route('category.edit', $category) }}">
+                    EDIT
+                </a>
+            </div>
             <span class="nome">
                 {{ $category->name }}
             </span>
-        {{ $category->pic_path }}
+            
     
             <ul >
-                prodotti:
                 @foreach ($category->products as $product)
-                    <li class="prodotto">{{ $product->name }}</li>
+                    <li class="prodotto">{{ $product->name }} 
+                        <a href="{{ route('product.delete', $product) }}">X</a></li>
                 @endforeach
+                <a href="{{ route('product.create', $category->id) }}">CREATE NEW product</a>
             </ul>
         </li>
         @endforeach
